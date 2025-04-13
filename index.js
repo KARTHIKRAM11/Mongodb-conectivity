@@ -33,15 +33,14 @@ app.get("/Product" , async(req,res) =>{
 })
 
 //app.listen(4000 ,()=>console.log('server running at 4000'))
-app.post("/getProduct" , async(req,res) =>{
-    try{
-        const temp = req.body;
-        const newdata = new Product(temp)
-        await newdata.save();
-        res.json(temp)
+app.post("/getProduct", async (req, res) => {
+    try {
+      console.log("Request body:", req.body); 
+      const newProduct = new Product(req.body);
+      await newProduct.save();
+      res.json(newProduct);
+    } catch (err) {
+      console.error("Error saving product:", err);
+      res.status(500).json({ message: "Server Error" });
     }
-
-    catch(err){
-        res.json(err)
-    }
-})
+  });
