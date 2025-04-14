@@ -31,8 +31,6 @@ app.get("/Product" , async(req,res) =>{
         res.json(err)
     }
 })
-
-//app.listen(4000 ,()=>console.log('server running at 4000'))
 app.post("/getProduct", async (req, res) => {
     try {
       console.log("Request body:", req.body); 
